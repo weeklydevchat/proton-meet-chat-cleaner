@@ -226,7 +226,7 @@ $('clearBtn').onclick = () => { $('raw').value = ''; $('exampleNote').hidden = t
 $('copyBtn').onclick = () => {
   const btn = $('copyBtn'), text = $('out').value;
   const done = msg => { btn.textContent = msg; setTimeout(() => (btn.textContent = 'Copy'), 1500); };
-  navigator.clipboard.writeText(text).then(() => done('Copied'), () => {
+  Promise.resolve().then(() => navigator.clipboard.writeText(text)).then(() => done('Copied'), () => {
     $('out').focus(); $('out').select(); done('Press Ctrl+C');
   });
 };
