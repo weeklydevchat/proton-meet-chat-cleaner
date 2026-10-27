@@ -38,6 +38,7 @@ body {
 }
 .wrap { max-width: 1200px; margin: 0 auto; display: grid; gap: 20px; }
 header h1 { margin: 0; font-size: 1.5rem; text-wrap: balance; }
+.version { font-size: 0.85rem; font-weight: 400; color: var(--muted); font-family: var(--font-mono); }
 header p { margin: 4px 0 0; color: var(--muted); max-width: 65ch; }
 .options {
   display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center;
@@ -75,7 +76,7 @@ textarea:focus-visible, button:focus-visible { outline: 2px solid var(--accent);
 
 <div class="wrap">
   <header>
-    <h1>Proton Meet Chat Cleaner</h1>
+    <h1>Proton Meet Chat Cleaner <span class="version">dev</span></h1>
     <p>Select all in the Proton Meet chat panel, copy, and paste on the left. The clean log appears on the right with buttons, avatar initials, and join/leave notices removed.</p>
   </header>
 
