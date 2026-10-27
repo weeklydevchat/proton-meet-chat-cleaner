@@ -122,7 +122,6 @@ textarea:focus-visible, button:focus-visible { outline: 2px solid var(--accent);
 const TIME_RE = /^\s*\d{1,2}:\d{2}(\s*[AP]M)?\s*$/i;
 const INITIALS_RE = /^\s*[\p{L}\p{N}]{1,3}\s*$/u;
 const TIMER_RE = /^\s*\d{1,2}:\d{2}:\d{2}\s*$/;
-const EVENT_RE = /^(Joined|Left) .+$/;
 
 function parse(text) {
   const lines = text.replace(/\r/g, '').split('\n');
@@ -143,7 +142,7 @@ function parse(text) {
     }
   }
   // With a known title only "Joined <title>" / "Left <title>" count, so a message like "Left early" survives.
-  const isEventLine = l => title ? l === `Joined ${title}` || l === `Left ${title}` : EVENT_RE.test(l);
+  const isEventLine = l => title && (l === `Joined ${title}` || l === `Left ${title}`);
   const msgs = [];
   heads.forEach((h, k) => {
     const end = k + 1 < heads.length ? heads[k + 1] - 2 : footer;
