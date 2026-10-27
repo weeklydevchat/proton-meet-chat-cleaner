@@ -69,7 +69,6 @@ textarea:focus-visible, button:focus-visible { outline: 2px solid var(--accent);
 .btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
 .stats { color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 .stats b { color: var(--fg); }
-.example-note { font-size: 0.85rem; color: var(--strike); }
 </style>
 </head>
 <body>
@@ -98,12 +97,45 @@ textarea:focus-visible, button:focus-visible { outline: 2px solid var(--accent);
     <section class="pane">
       <div class="pane-head">
         <h2>Raw chat (paste here)</h2>
-        <span style="display:flex;gap:8px;align-items:center">
-          <span class="example-note" id="exampleNote">Example from Oct 2026 chat</span>
-          <button class="btn" id="clearBtn" type="button">Clear</button>
-        </span>
+        <button class="btn" id="clearBtn" type="button">Clear</button>
       </div>
-      <textarea id="raw" spellcheck="false" aria-label="Raw chat"></textarea>
+      <textarea id="raw" spellcheck="false" aria-label="Raw chat">AR
+Alex Rivera
+10:01 AM
+Joined Weekly Dev Chat
+SP
+Sam Patel (You)
+10:02 AM
+Morning all. Did anyone try the new build?
+AR
+Alex Rivera
+10:03 AM
+Yes, it installs fine.
+
+Startup feels faster too.
+AR
+Alex Rivera
+10:03 AM
+I'll post timings later.
+JL
+Jordan Lee
+10:05 AM
+Joined Weekly Dev Chat
+JL
+Jordan Lee
+10:06 AM
+Sorry I'm late. Left early yesterday, catching up now.
+SP
+Sam Patel (You)
+10:09 AM
+No worries, notes are in the shared folder.
+AR
+Alex Rivera
+10:12 AM
+Left Weekly Dev Chat
+Weekly Dev Chat
+0:11:48
+Leave</textarea>
     </section>
     <section class="pane">
       <div class="pane-head">
@@ -221,8 +253,8 @@ function setFmt(f, save = true) {
 $('fmtText').onclick = () => setFmt('text');
 $('fmtMd').onclick = () => setFmt('md');
 ['optJoins', 'optTimes', 'optNames', 'optMerge'].forEach(id => $(id).addEventListener('change', () => { render(); saveOpts(); }));
-$('raw').addEventListener('input', () => { $('exampleNote').hidden = true; render(); });
-$('clearBtn').onclick = () => { $('raw').value = ''; $('exampleNote').hidden = true; render(); $('raw').focus(); };
+$('raw').addEventListener('input', render);
+$('clearBtn').onclick = () => { $('raw').value = ''; render(); $('raw').focus(); };
 $('copyBtn').onclick = () => {
   const btn = $('copyBtn'), text = $('out').value;
   const done = msg => { btn.textContent = msg; setTimeout(() => (btn.textContent = 'Copy'), 1500); };
