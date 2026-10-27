@@ -134,7 +134,7 @@ function parse(text) {
   // Cut the meeting footer (meeting title, call timer, Leave button, toast) and keep the title.
   let footer = lines.length, title = '';
   const last = heads[heads.length - 1] ?? lines.length;
-  for (let j = last + 1; j < lines.length; j++) {
+  for (let j = lines.length - 1; j > last; j--) {
     if (TIMER_RE.test(lines[j])) {
       footer = j - 1;
       while (footer > last && !lines[footer].trim()) footer--;
