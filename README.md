@@ -28,10 +28,12 @@ The whole app is `index.html`: one file with no build step and no dependencies. 
 
 The site is deployed to GitHub Pages by hand from a tag:
 
-1. Tag the release, e.g. `git tag v1.0.0 && git push origin v1.0.0`.
+1. Tag the release, e.g. `git tag v2026.2.0 && git push origin v2026.2.0`.
 2. Run the **Publish to GitHub Pages** workflow (Actions tab) and give it the tag.
 
 Only `index.html` is published.
+
+Versions are `vYEAR.RELEASE.PATCH`: the year, the release number within that year (starting at 1 each year), and the patch number (e.g. `v2026.2.0`, `v2026.3.1`, `v2027.1.0`).
 
 ## License
 
